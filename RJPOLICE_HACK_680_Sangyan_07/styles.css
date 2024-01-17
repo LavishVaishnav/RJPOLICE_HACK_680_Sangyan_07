@@ -1,0 +1,62 @@
+/* Add or update your existing styles as needed */
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* New white-blue theme styles */
+.white-blue-theme {
+  background-color: #ffffff;
+  color: #fafcfd; /* Dark blue text */
+}
+
+.very-small-img {
+  width: 30px;
+  height: 30px;
+}
+
+.navbar-brand img {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.navbar-brand {
+  font-size: 3.5vw;
+  font-weight: lighter;
+  color: #000000; /* Dark blue text */
+  font-family: "Ubuntu Mono", monospace;
+  text-decoration: none !important; /* Remove underline */
+  display: flex;
+  align-items: center; /* Align vertically */
+  justify-content: center; /* Align horizontally */
+  height: 100%; /* Ensure the navbar height is fully utilized */
+  margin:auto;
+}
+
+.navbar {
+  background-color: #eff1f3; /* Light blue background */
+}
+
+.nav-link {
+  color: #040404; /* Dark blue text */
+  font-size: 1.5vw;
+  padding-top: 1.7rem;
+}
+
+.login-div {
+  background-color: #000000; /* Light blue background */
+}
+
+.btn {
+  background-color: #000000; /* Dark blue button */
+}
+
+.btn:hover {
+  background-color: #ebecec; /* Darker blue on hover */
+  color: #ffffff; /* White text on hover */
+  font-weight: bold;
+}
+.navbar p-1 col{
+  margin-left: 704px;
+}
