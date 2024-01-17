@@ -5,34 +5,43 @@ import joblib
 
 app = Flask(__name__)
 
-# Load the trained model
-model_path = "path/to/your/model.pkl"
+model_path = "/Users/lavishvaishnav/Desktop/OLD_RJPOLICE_HACK_680_Sangyan_07/UPI_model.pkl"
 model = joblib.load(model_path)
 
-# Create a StandardScaler object
+
+dataset_path = "/Users/lavishvaishnav/Desktop/OLD_RJPOLICE_HACK_680_Sangyan_07/upi_fraud_dataset.csv"
+dataset = pd.read_csv(dataset_path)
+
 scaler = StandardScaler()
+
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
+
     try:
-        # Get the data from the request
+       
         data = request.get_json()
 
-        # Create a DataFrame from the data
+
         data_df = pd.DataFrame([data])
 
-        # Check if any values are zero
-        any_zero = data_df.iloc[0, :-1].eq(0).any()
+       
+        zero_fields = data_df.columns[data_df.iloc[0, :-1].eq(0)].tolist()
 
-        if any_zero:
-            prediction_label = 'The Transaction you made is Invalid, Enter Valid Data'
-        else:
-            # Scale the features using the previously created scaler
-            data_scaled = scaler.transform(data_df)
+        if zero_fields:
+            return jsonify({"error": f"Invalid input. The following fields have zero values: {', '.join(zero_fields)}"})
 
-            # Make the prediction
-            prediction = model.predict(data_scaled)
-            prediction_label = "Yes, it is fraud" if prediction[0] == 1 else "No, it is not fraud"
+       
+        user_upi_number = data['upi_number']
+        user_data = dataset[dataset['upi_number'] == user_upi_number].drop(columns=['fraud_label'])
+        
+        # Scale the features using the previously created scaler
+        data_scaled = scaler.transform(user_data)
+
+        # Make the prediction
+        prediction = model.predict(data_scaled)
+        prediction_label = "Yes, it is fraud" if prediction[0] == 1 else "No, it is not fraud"
 
         result = {"prediction_label": prediction_label}
         return jsonify(result)
