@@ -48,5 +48,7 @@ This project stands as a testament to our team's ability to deliver real-world f
 
 ![Rajasthan Police Hackathon Result 1](https://github.com/LavishVaishnav/RJPOLICE_HACK_680_Sangyan_07/blob/main/RESULT1.png)
 
+![Rajasthan Police Hackathon Result 6](https://github.com/LavishVaishnav/RJPOLICE_HACK_680_Sangyan_07/blob/main/RESULT6.png)
+
 
 ---
